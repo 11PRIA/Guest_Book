@@ -6,7 +6,7 @@ A simple, elegant single-page Guest Book application built using **HTML**, **CSS
 
 ## 🌐 Live Demo
 
-🔗 **Live URL**: https://guest-book-eif.pages.dev/ 
+🔗 **Live URL**: https://guest-book-application.pages.dev/
 _Deployed via Cloudflare Pages_
 
 ---
