@@ -212,31 +212,51 @@ main {
   display: flex;
   align-items: center;
   gap: 0.5em;
+  min-width: 120px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 #guest-form button:hover {
   background: #e07c30;
   transform: scale(1.04);
 }
-#form-success.toast {
-  color: #fff;
-  background: var(--accent-color);
-  border-radius: 8px;
-  padding: 0.7rem 1.2rem;
-  position: fixed;
-  left: 50%;
-  bottom: 2.5rem;
-  transform: translateX(-50%);
-  box-shadow: 0 2px 12px rgba(255,145,77,0.18);
-  z-index: 100;
+#form-success {
+  margin-top: 1rem;
+  text-align: center;
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  background: #D4EDDA;
+  color: #155724;
+  border-radius: 8px;
+  border: 1.5px solid #B7E4C7;
+  padding: 0.5rem 1.2rem;
+  box-shadow: 0 2px 8px rgba(87, 187, 138, 0.10);
+  display: block;
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s;
+  transform: scale(0.95);
+  transition: opacity 0.3s, transform 0.3s;
+  position: static;
+  width: fit-content;
+  min-width: 120px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
-#form-success.toast.show {
+#form-success.popIn {
   opacity: 1;
-  pointer-events: auto;
+  transform: scale(1.05);
+  animation: popInAnim 0.3s cubic-bezier(.4,2,.6,1);
+}
+#form-success.fadeOut {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.4s, transform 0.4s;
+}
+@keyframes popInAnim {
+  0% { opacity: 0; transform: scale(0.95); }
+  80% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1.05); }
 }
 .hidden {
   display: none;

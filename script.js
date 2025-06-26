@@ -30,14 +30,30 @@ document.getElementById('guest-form').onsubmit = async (e) => {
     .from('guest_entries')
     .insert([{ name, email, message }]);
 
+  const successDiv = document.getElementById('form-success');
   if (!error) {
-    document.getElementById('form-success').classList.remove('hidden');
     document.getElementById('guest-form').reset();
+    successDiv.textContent = 'Thank you for signing the guest book!';
+    successDiv.classList.remove('hidden', 'fadeOut');
+    successDiv.classList.add('popIn');
     setTimeout(() => {
-      document.getElementById('form-success').classList.add('hidden');
+      successDiv.classList.add('fadeOut');
+      setTimeout(() => {
+        successDiv.classList.add('hidden');
+        successDiv.classList.remove('popIn', 'fadeOut');
+      }, 400);
     }, 2000);
   } else {
-    alert('Error submitting entry.');
+    successDiv.textContent = 'Error submitting entry.';
+    successDiv.classList.remove('hidden', 'fadeOut');
+    successDiv.classList.add('popIn');
+    setTimeout(() => {
+      successDiv.classList.add('fadeOut');
+      setTimeout(() => {
+        successDiv.classList.add('hidden');
+        successDiv.classList.remove('popIn', 'fadeOut');
+      }, 400);
+    }, 2000);
   }
 };
 
