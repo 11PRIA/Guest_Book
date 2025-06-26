@@ -1,0 +1,64 @@
+// Tab switching
+const homeTab = document.getElementById('tab-home');
+const viewTab = document.getElementById('tab-view');
+const homeSection = document.getElementById('home-section');
+const viewSection = document.getElementById('view-section');
+
+homeTab.onclick = () => {
+  homeTab.classList.add('active');
+  viewTab.classList.remove('active');
+  homeSection.classList.remove('hidden');
+  viewSection.classList.add('hidden');
+};
+
+viewTab.onclick = async () => {
+  homeTab.classList.remove('active');
+  viewTab.classList.add('active');
+  homeSection.classList.add('hidden');
+  viewSection.classList.remove('hidden');
+  await loadGuests();
+};
+
+// Form submission
+document.getElementById('guest-form').onsubmit = async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  const { error } = await supabase
+    .from('guest_entries')
+    .insert([{ name, email, message }]);
+
+  if (!error) {
+    document.getElementById('form-success').classList.remove('hidden');
+    document.getElementById('guest-form').reset();
+    setTimeout(() => {
+      document.getElementById('form-success').classList.add('hidden');
+    }, 2000);
+  } else {
+    alert('Error submitting entry.');
+  }
+};
+
+// Load guests
+async function loadGuests() {
+  const { data, error } = await supabase
+    .from('guest_entries')
+    .select('name, email, timestamp')
+    .order('timestamp', { ascending: false });
+
+  const tbody = document.getElementById('guest-table-body');
+  tbody.innerHTML = '';
+  if (data) {
+    data.forEach(entry => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${new Date(entry.timestamp).toLocaleString()}</td>
+        <td>${entry.name}</td>
+        <td>${entry.email}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+} 

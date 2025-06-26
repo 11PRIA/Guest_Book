@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guest Book</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script defer src="supabase.js"></script>
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Guest Book</h1>
+      <nav>
+        <button id="tab-home" class="active">Home</button>
+        <button id="tab-view">View Guests</button>
+      </nav>
+    </header>
+    <main>
+      <section id="home-section">
+        <div class="hero-section fade-in">
+          <div class="hero-image-container hero-bg">
+            <div class="hero-overlay"></div>
+            <div class="hero-text">
+              <h1>Welcome to Our Event Guest Book</h1>
+              <p>Share your thoughts with us ✨</p>
+            </div>
+          </div>
+          <!-- <div class="hero-image-container">
+            <img
+              src="hero.png"
+              alt="AI-generated event hero image 2"
+              class="hero-img"
+            />
+            <div class="hero-overlay"></div>
+            <div class="hero-text">
+              <h1>Welcome to Our Event Guest Book</h1>
+              <p>Share your thoughts with us ✨</p>
+            </div>
+          </div> -->
+        </div>
+        <div class="event-description fade-in">
+          <h2>Welcome to Our Special Event!</h2>
+          <p>
+            Sign our guest book to let us know you were here. Enter your
+            <strong>Name</strong>, <strong>Email-ID</strong>, and a
+            <strong>Message</strong> below. Your entry will appear in the guest
+            list!
+          </p>
+        </div>
+        <form id="guest-form" aria-label="Guest Entry Form" class="fade-in">
+          <label for="name"><span class="form-icon">👤</span> Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Your name"
+            required
+            aria-label="Name"
+          />
+          <label for="email"><span class="form-icon">📧</span> Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="your@email.com"
+            required
+            aria-label="Email"
+          />
+          <label for="message"><span class="form-icon">💬</span> Message</label>
+          <textarea
+            id="message"
+            placeholder="Type your message here..."
+            required
+            aria-label="Message"
+          ></textarea>
+          <button type="submit">
+            <span class="form-icon">✍️</span> Submit
+          </button>
+        </form>
+        <div id="form-success" class="hidden toast" role="status">
+          Thank you for signing the guest book!
+        </div>
+      </section>
+      <section id="view-section" class="hidden fade-in">
+        <table aria-label="Guest Entries Table">
+          <thead>
+            <tr>
+              <th><span class="table-icon">⏱️</span> Date</th>
+              <th><span class="table-icon">👤</span> Name</th>
+              <th><span class="table-icon">📧</span> Email</th>
+            </tr>
+          </thead>
+          <tbody id="guest-table-body"></tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>
