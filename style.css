@@ -346,4 +346,44 @@ h1 {
   #guest-form {
     padding: 1rem;
   }
+  /* Responsive table: make table scrollable and stack rows as cards */
+  #view-section table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+  }
+  #view-section thead {
+    display: none;
+  }
+  #view-section tbody, #view-section tr {
+    display: block;
+    width: 100%;
+  }
+  #view-section tr {
+    margin-bottom: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(94,80,63,0.07);
+    padding: 0.5rem 0.7rem;
+  }
+  #view-section td {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.4rem 0;
+    font-size: 1rem;
+    border: none;
+    position: relative;
+  }
+  #view-section td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--secondary);
+    min-width: 80px;
+    margin-right: 0.5em;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 0.98em;
+    flex-shrink: 0;
+  }
 } 

@@ -70,9 +70,9 @@ async function loadGuests() {
     data.forEach(entry => {
       const row = document.createElement('tr');
       row.innerHTML = `
-        <td>${new Date(entry.timestamp).toLocaleString()}</td>
-        <td>${entry.name}</td>
-        <td>${entry.email}</td>
+        <td data-label="Date">${new Date(entry.timestamp).toLocaleString()}</td>
+        <td data-label="Name">${entry.name}</td>
+        <td data-label="Email">${entry.email}</td>
       `;
       tbody.appendChild(row);
     });
